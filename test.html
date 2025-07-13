@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <title>Sticky Header Demo</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      line-height: 1.6;
+    }
+
+    /* ▼ 追従ヘッダー */
+    header {
+      position: sticky;   /* ← これだけで “スクロール追従” が完成 */
+      top: 0;             /* ビューポート最上部に貼り付く */
+      z-index: 1000;      /* 他の要素で隠れないように */
+      background: #333;
+      color: #fff;
+      padding: 1rem 2rem;
+    }
+
+    main {
+      padding: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Sticky Header</h1>
+  </header>
+
+  <main>
+    <!-- 適当に縦長コンテンツ -->
+    <p>スクロールしてもヘッダーは常に見えるはずです。</p>
+    <!-- この記事をコピーして縦に増やしてもOK -->
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. …</p>
+    <p>（以下ダミーをたくさん置く）</p>
+    <p style="margin-bottom: 200vh;"></p>
+  </main>
+</body>
+</html>
