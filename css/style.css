@@ -8,12 +8,17 @@ body {
 .site-header {
   position: sticky;
   top: 0;
-  background: #222;
+  z-index: 1000;
+  background: #333;
   color: #fff;
-  width: 100%;
-  padding: 0;
+  padding: 1rem 2rem;
+  transition: transform 0.3s ease;  /* ← 追加 */
 }
 
+/* ▼ ヘッダーを隠す */
+.site-header.hidden {
+  transform: translateY(-100%);      /* ヘッダーの高さ分だけ上へスライド */
+}
 
 .header_main {
   position: relative;

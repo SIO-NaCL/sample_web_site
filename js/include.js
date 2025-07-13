@@ -19,5 +19,20 @@ window.addEventListener('DOMContentLoaded', async () => {
   ]);
 
   /* ===== ここ以降は “共通パーツが挿入済み” =====
-     例: 現在ページに active クラスを付ける、メニュー開閉など */
+  /* ===== ここからスクロール検知ロジック ===== */
+  const header = document.querySelector('.site-header');
+  let lastScrollY = window.scrollY;
+
+  window.addEventListener('scroll', () => {
+    const currentY = window.scrollY;
+    if (currentY > lastScrollY && currentY > header.clientHeight) {
+      // 下方向にスクロール＆十分下に来たら隠す
+      header.classList.add('hidden');
+    } else {
+      // 上方向にスクロールしたら表示
+      header.classList.remove('hidden');
+    }
+    lastScrollY = currentY;
+  });
+  /* ===== スクロール検知終わり ===== */
 });
