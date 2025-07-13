@@ -14,8 +14,8 @@ window.addEventListener('DOMContentLoaded', async () => {
 
   // ヘッダーを <body> 先頭に、フッターを末尾に
   await Promise.all([
-    insert('/header.html', 'afterbegin'),
-    insert('/footer.html', 'beforeend')
+    insert('./header.html', 'afterbegin'),
+    insert('./footer.html', 'beforeend')
   ]);
 
   /* ===== ここ以降は “共通パーツが挿入済み” =====
