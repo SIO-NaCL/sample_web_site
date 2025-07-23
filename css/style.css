@@ -1,102 +1,101 @@
+/* Reset style */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-      margin: 0;
-      font-family: system-ui, sans-serif;
-      line-height: 1.6;
-    }
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  line-height: 1.6;
+  background-color: #f1f1f1;
+  /* background-color: #ff0000; */
+}
 
 /* header start -------------------------------------*/
+/* ===== Sticky Header ===== */
 .site-header {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: #333;
+  background: #ffffff;
   color: #fff;
   padding: 1rem 2rem;
-  transition: transform 0.3s ease;  /* ← 追加 */
+  transition: transform 0.3s ease;  /* スライド時のアニメーション */
 }
 
-/* ▼ ヘッダーを隠す */
-.site-header.hidden {
-  transform: translateY(-100%);      /* ヘッダーの高さ分だけ上へスライド */
-}
-
-.header_main {
-  position: relative;
+/* ===== レイアウト用 Flexbox ===== */
+.header-inner {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: flex-start;
-  max-width: 1200px;
-  padding: 0 2rem;
-  height: auto;
-}
-/* ロゴ部分 start */
-.site_logo {
-  display: flex;
-  align-items: center;
-  height: auto;
-  max-width: 10%;
-  margin: 01rem;
+  width: 100%;
+  
 }
 
-.site_logo img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-/* ロゴ部分 end */
-
-/* メニュー部分 start */
-.accordion-menu {
-  display: flex;
-  align-items: center;
-  height: 100%;
+/* ===== ロゴ ===== */
+.header-inner.logo{
+  max-width: 15px;
 }
 
-#menu-list {
+/* ハンバーガーボタン（デスクトップでは非表示） */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* デスクトップ用メニュー */
+.site-nav ul {
   display: flex;
-  gap: 2rem;
   list-style: none;
-  margin: 0 2rem;
+  gap: 1rem;
+  margin: 0;
   padding: 0;
 }
 
-#menu-list > li > a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: 500;
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  transition: background 0.2s;
-  border-radius: 4px;
+/* ===== 隠すためのクラス ===== */
+.site-header.hidden {
+  transform: translateY(-100%);
 }
 
-#menu-list > li > a:hover {
-  background: #444;
+/* ===== レスポンシブ: 768px 以下 ===== */
+@media screen and (max-width: 768px) {
+  /* ハンバーガーボタンを表示 */
+  .menu-toggle {
+    display: block;
+  }
+  /* メニューは初期非表示 */
+  .site-nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: #ffffff;
+    display: none;
+    flex-direction: column;
+  }
+  /* open クラスで表示 */
+  .site-nav.open {
+    display: flex;
+  }
+  /* モバイル時は縦並び */
+  .site-nav ul {
+    flex-direction: column;
+    gap: 0;
+  }
+  .site-nav li + li {
+    border-top: 1px solid #444;
+  }
+  .site-nav a {
+    padding: 0.75rem 1rem;
+    display: block;
+  }
 }
-/* メニュー部分 end */
-/* サブメニュー展開（ホバー時） */
-.menu-list > li {
-  position: relative;
-}
-.submenu {
-  display: none;
-  position: absolute;
-  background: #222;
-  color: #fff;
-  min-width: 160px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-  padding: 0.5rem 0;
-  margin-top: 0.5rem;
-  z-index: 1001;
-}
-.menu-list > li:hover > .submenu {
-  display: block;
-}
-/* サブメニューのリンク色を常に白に */
-.submenu a,
-.submenu a:visited {
-  color: #fff;
-}
+
 
 /* header end ---------------------------*/
 .site-footer{
